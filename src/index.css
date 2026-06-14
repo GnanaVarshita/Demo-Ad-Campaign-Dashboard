@@ -1,0 +1,111 @@
+:root {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #060913;
+  color: #f8fafc;
+  font-family: "Plus Jakarta Sans", "Outfit", "Inter", sans-serif;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Beautiful background glow effects inspired by IBM Bob */
+body::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: 20%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+  z-index: -1;
+  pointer-events: none;
+  filter: blur(80px);
+}
+
+body::after {
+  content: "";
+  position: absolute;
+  bottom: 10%;
+  right: 10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.12) 0%, rgba(0, 0, 0, 0) 70%);
+  z-index: -1;
+  pointer-events: none;
+  filter: blur(80px);
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #070a13;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Interactive hover gradients */
+.hover-gradient-border {
+  position: relative;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.6);
+  z-index: 1;
+}
+
+.hover-gradient-border::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 12px;
+  padding: 1.5px;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.3) 0%, rgba(168, 85, 247, 0.1) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  transition: all 0.4s ease;
+  z-index: -1;
+}
+
+.hover-gradient-border:hover::before {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.8) 0%, rgba(168, 85, 247, 0.6) 100%);
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
+}
+
+/* Glassmorphism sidebar item */
+.sidebar-item-active {
+  background: linear-gradient(90deg, rgba(99, 102, 241, 0.15) 0%, rgba(168, 85, 247, 0.05) 100%) !important;
+  border-left: 3px solid #6366f1 !important;
+  color: #fff !important;
+}
+
+/* Subtle glow keyframes */
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(99, 102, 241, 0.3);
+  }
+}
+
+.video-glow {
+  animation: glow 6s infinite ease-in-out;
+}
