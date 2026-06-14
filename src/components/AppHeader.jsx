@@ -27,7 +27,7 @@ export default function AppHeader() {
                 fontFamily: '"Outfit", sans-serif',
                 fontWeight: 800,
                 letterSpacing: '-0.5px',
-                color: '#6366f1'
+                
               }}
             >
               Campaign Dashboard
