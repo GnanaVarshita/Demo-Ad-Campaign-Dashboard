@@ -18,7 +18,7 @@ const sessions = [
     role: 'AIM',
     roleColor: '#6366f1', // Indigo
     videoSrc: 'https://www.youtube.com/embed/duqRtA3TfwI',
-    url: 'https://campaign.ibm.com/workflow/aim-request',
+    url: 'https://gnanavarshita.github.io/Campaign-dashboard/',
     icon: Landmark,
     description: 'Initiate and configure the baseline budget requests for the campaign, inputting region-specific cost estimates and setting up target criteria.',
     features: [
@@ -36,7 +36,7 @@ const sessions = [
     role: 'AM / MDO',
     roleColor: '#3b82f6', // Blue
     videoSrc: 'https://www.youtube.com/embed/0jaht5lnRyc',
-    url: 'https://campaign.ibm.com/workflow/am-submission',
+    url: 'https://gnanavarshita.github.io/Campaign-dashboard/',
     icon: User,
     description: 'Verify, refine, and compile the MDOs baseline inputs. Align the regional campaign goals with standard corporate budget guidelines.',
     features: [
@@ -54,7 +54,7 @@ const sessions = [
     role: 'ZM',
     roleColor: '#a855f7', // Purple
     videoSrc: 'https://www.youtube.com/embed/k0D54kPLI30',
-    url: 'https://campaign.ibm.com/workflow/zm-review',
+    url: 'https://gnanavarshita.github.io/Campaign-dashboard/',
     icon: Layers,
     description: 'Perform zonal audit of the submitted budget proposal, applying adjustments, caps, or querying specific line-items as required.',
     features: [
@@ -72,7 +72,7 @@ const sessions = [
     role: 'RM',
     roleColor: '#10b981', // Emerald
     videoSrc: 'https://www.youtube.com/embed/VUtzUrV2qNo',
-    url: 'https://campaign.ibm.com/workflow/rm-approval',
+    url: 'https://gnanavarshita.github.io/Campaign-dashboard/',
     icon: ShieldCheck,
     description: 'Provide final executive sanction. Complete authorization logs and disburse funds for active regional deployments.',
     features: [
@@ -90,7 +90,7 @@ const sessions = [
     role: 'Flow',
     roleColor: '#f59e0b', // Amber
     videoSrc: 'https://www.youtube.com/embed/q_7uX8aaDCw',
-    url: 'https://campaign.ibm.com/workflow/telangana-flow',
+    url: 'https://gnanavarshita.github.io/Campaign-dashboard/',
     icon: Laptop,
     description: 'Step-by-step walkthrough of the entire campaign budget lifecycle, following a request from Telangana state through all administrative roles.',
     features: [
@@ -98,6 +98,78 @@ const sessions = [
       'Real-time status updates and action alerts',
       'Comprehensive system audit trail inspection',
       'State-level filtering and analytics demo'
+    ],
+    status: ['Complete', 'Complete', 'Complete', 'Complete']
+  },
+  {
+    id: 6,
+    step: '06',
+    title: 'MDO Budget Draft',
+    role: 'MDO',
+    roleColor: '#ec4899', // Pink
+    videoSrc: 'https://www.youtube.com/embed/6Gfrmj1Ykxc',
+    url: 'https://gnanavarshita.github.io/Campaign-dashboard/',
+    icon: User,
+    description: 'Marketing Development Officers (MDO) create localized event configurations and initialize the budget request parameters.',
+    features: [
+      'Define localized operation channels',
+      'Create draft cost estimates',
+      'Attach local vendor documentation',
+      'Route to AIM review'
+    ],
+    status: ['Active', 'Pending', 'Pending', 'Pending']
+  },
+  {
+    id: 7,
+    step: '07',
+    title: 'Finance Audit Review',
+    role: 'Finance',
+    roleColor: '#14b8a6', // Teal
+    videoSrc: 'https://www.youtube.com/embed/Oa-jEKbQhfM',
+    url: 'https://gnanavarshita.github.io/Campaign-dashboard/',
+    icon: Landmark,
+    description: 'Internal auditing verification for tax compliance, budget allocation ledgers, and institutional compliance checks.',
+    features: [
+      'Cross-reference cost ledger codes',
+      'Verify tax allocations',
+      'Check zonal fund availability limits',
+      'Approve ledger disbursement'
+    ],
+    status: ['Complete', 'Complete', 'Active', 'Pending']
+  },
+  {
+    id: 8,
+    step: '08',
+    title: 'Admin Portal Settings',
+    role: 'Admin',
+    roleColor: '#6b7280', // Gray
+    videoSrc: 'https://www.youtube.com/embed/U3ttfWpTusA',
+    url: 'https://gnanavarshita.github.io/Campaign-dashboard/',
+    icon: ShieldCheck,
+    description: 'Administrative console for configuring user role mappings, setting approval caps, and managing workflow lifecycle parameters.',
+    features: [
+      'Manage user role permissions',
+      'Set budget approval boundaries',
+      'Track active system events',
+      'Examine global audit log records'
+    ],
+    status: ['Complete', 'Complete', 'Complete', 'Active']
+  },
+  {
+    id: 9,
+    step: '09',
+    title: 'Alternative Flow Demo',
+    role: 'All Roles',
+    roleColor: '#eab308', // Amber
+    videoSrc: 'https://www.youtube.com/embed/zLgJIsp4Lfw',
+    url: 'https://gnanavarshita.github.io/Campaign-dashboard/',
+    icon: Laptop,
+    description: 'Complete end-to-end budget approval flow illustrating regional query callbacks, corrections, and successful final status promotion.',
+    features: [
+      'Demonstrate query resolution handoffs',
+      'Trigger workflow status notifications',
+      'Trace budget revisions in audit trail',
+      'Review finalized regional outputs'
     ],
     status: ['Complete', 'Complete', 'Complete', 'Complete']
   }
