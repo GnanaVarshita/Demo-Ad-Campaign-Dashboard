@@ -172,6 +172,24 @@ const sessions = [
       'Review finalized regional outputs'
     ],
     status: ['Complete', 'Complete', 'Complete', 'Complete']
+  },
+  {
+    id: 10,
+    step: '10',
+    title: 'AIM Login & Features',
+    role: 'AIM',
+    roleColor: '#6366f1', // Indigo
+    videoSrc: 'https://www.youtube.com/embed/xrBI9vE7XOE',
+    url: 'https://gnanavarshita.github.io/Campaign-dashboard/',
+    icon: Landmark,
+    description: 'Detailed showcase of the AIM portal\'s authentication flow, secure credentials check, and dashboard features.',
+    features: [
+      'Secure portal login and authentication checks',
+      'View regional dashboard action panels',
+      'Verify active workflow logs and status flags',
+      'Overview of pending budget requests and alerts'
+    ],
+    status: ['Active', 'Pending', 'Pending', 'Pending']
   }
 ];
 
