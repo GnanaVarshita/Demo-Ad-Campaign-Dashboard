@@ -205,7 +205,7 @@ function App() {
         <AppHeader />
 
         {/* HERO SECTION / INTRO */}
-        <Container maxWidth="xl" sx={{ mt: 8, mb: 4 }}>
+        <Container maxWidth="xl" sx={{  mb: 4 }}>
           <Stack spacing={2} sx={{ maxWidth: 800, mb: 6 }}>
             <Typography 
               variant="h3" 
@@ -239,15 +239,15 @@ function App() {
 
             {/* SHOWCASE WORKSPACE: Video and Description */}
             <Grid item xs={12} md={8.5}>
-              <Grid container spacing={3.5} alignItems="stretch" sx={{ height: '100%' }}>
+              <Grid container spacing={3.5} alignItems="flex-start">
                 
                 {/* VIDEO PANEL */}
-                <Grid item xs={12} lg={7.5}>
+                <Grid item xs={12} lg={8}>
                   <VideoPlayer activeSession={activeSession} />
                 </Grid>
 
                 {/* DESCRIPTION PANEL */}
-                <Grid item xs={12} lg={4.5}>
+                <Grid item xs={12} lg={4}>
                   <DetailCard activeSession={activeSession} />
                 </Grid>
 

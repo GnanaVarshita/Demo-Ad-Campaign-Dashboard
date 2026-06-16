@@ -26,7 +26,17 @@ export default function AppSidebar({ sessions, activeSession, onSelectSession })
       
       <Divider sx={{ opacity: 0.5 }} />
       
-      <List sx={{ display: 'flex', flexDirection: 'column', gap: 1.5, p: 0 }}>
+      <List 
+        sx={{ 
+          display: 'flex', 
+          flexDirection: 'column', 
+          gap: 1.5, 
+          p: 0,
+          maxHeight: '400px',
+          overflowY: 'auto',
+          
+        }}
+      >
         {sessions.map((session) => {
           const isActive = activeSession.id === session.id;
           return (
