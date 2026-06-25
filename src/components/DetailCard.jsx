@@ -1,74 +1,121 @@
 import React from 'react';
-import { Box, Stack, Typography } from '@mui/material';
-import { Check } from 'lucide-react';
+import { Box, Stack, Typography, Chip } from '@mui/material';
+import { Check, ArrowRight } from 'lucide-react';
 
 export default function DetailCard({ activeSession }) {
-  const CurrentIcon = activeSession.icon;
-
   return (
     <Box 
       sx={{ 
         display: 'flex',
         flexDirection: 'column',
         py: 1,
-        px: { xs: 0,  },
-        gap: 3.5
+        gap: 4
       }}
     >
       
-      {/* Header Details (IBM Bob Side-by-Side Layout) */}
-      <Stack direction="row" spacing={3} alignItems="flex-start">
-        {/* Glowing Icon Wrapper */}
-        {/* <Box 
+      {/* Title & Overview */}
+      <Stack spacing={2}>
+        <Typography 
+          variant="h4" 
+          component="h2"
           sx={{ 
-            p: 1.75, 
-            borderRadius: 2, 
-            backgroundColor: 'rgba(255, 255, 255, 0.02)',
-            border: '1px solid rgba(255, 255, 255, 0.08)',
-            color: activeSession.roleColor,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            flexShrink: 0,
-            boxShadow: `0 4px 20px ${activeSession.roleColor}22`,
-            mt: 0.5
+            fontWeight: 800, 
+            lineHeight: 1.2,
+            fontFamily: '"Outfit", sans-serif',
+            letterSpacing: '-0.5px',
+            color: '#ffffff'
           }}
         >
-          <CurrentIcon size={24} />
-        </Box> */}
+          {activeSession.title}
+        </Typography>
         
-        {/* Title and Description */}
-        <Stack spacing={2.5}>
+        <Typography 
+          variant="body2" 
+          color="text.secondary" 
+          sx={{ 
+            lineHeight: 1.7, 
+            fontSize: '0.95rem',
+            fontWeight: 400
+          }}
+        >
+          {activeSession.description}
+        </Typography>
+      </Stack>
+
+      {/* Dynamic Workflow Timeline Stepper */}
+      {activeSession.workflowSteps && (
+        <Box>
           <Typography 
-            variant="h4" 
-            component="h2"
+            variant="subtitle2" 
             sx={{ 
-              fontWeight: 800, 
-              lineHeight: 1.2,
-              fontFamily: '"Outfit", sans-serif',
-              letterSpacing: '-0.5px',
-              color: '#ffffff'
+              fontWeight: 700, 
+              mb: 2.5, 
+              color: '#f8fafc',
+              textTransform: 'uppercase',
+              letterSpacing: '1px',
+              fontSize: '0.75rem'
             }}
           >
-            {activeSession.title}
+            Workflow Timeline
           </Typography>
           
-          <Typography 
-            variant="body1" 
-            color="text.secondary" 
-            sx={{ 
-              lineHeight: 1.7, 
-              fontSize: '1.05rem',
-              fontWeight: 400
-            }}
-          >
-            {activeSession.description}
-          </Typography>
-        </Stack>
-      </Stack>
+          <Stack spacing={2} sx={{ position: 'relative', pl: 1 }}>
+            {/* Timeline Vertical Line */}
+            <Box 
+              sx={{ 
+                position: 'absolute', 
+                left: '12px', 
+                top: '10px', 
+                bottom: '10px', 
+                width: '1px', 
+                backgroundColor: 'rgba(255, 255, 255, 0.08)' 
+              }} 
+            />
+
+            {activeSession.workflowSteps.map((step, idx) => (
+              <Stack key={idx} direction="row" spacing={2.5} sx={{ position: 'relative' }}>
+                {/* Bullet node */}
+                <Box 
+                  sx={{ 
+                    width: 9, 
+                    height: 9, 
+                    borderRadius: '50%', 
+                    backgroundColor: activeSession.roleColor, 
+                    boxShadow: `0 0 8px ${activeSession.roleColor}`, 
+                    mt: '6px',
+                    ml: '8px',
+                    flexShrink: 0,
+                    zIndex: 2
+                  }} 
+                />
+                
+                <Box>
+                  <Stack direction="row" spacing={1} alignItems="center" sx={{ mb: 0.5 }}>
+                    <Chip 
+                      label={step.role} 
+                      size="small"
+                      sx={{ 
+                        backgroundColor: 'rgba(255, 255, 255, 0.04)', 
+                        color: activeSession.roleColor,
+                        border: `1px solid ${activeSession.roleColor}33`,
+                        fontWeight: 700,
+                        fontSize: '0.65rem',
+                        height: '18px'
+                      }}
+                    />
+                  </Stack>
+                  <Typography variant="body2" color="text.secondary" sx={{ fontSize: '0.85rem', lineHeight: 1.5 }}>
+                    {step.text}
+                  </Typography>
+                </Box>
+              </Stack>
+            ))}
+          </Stack>
+        </Box>
+      )}
       
       {/* Functional Scope Checklist */}
-      <Box sx={{ pl: { xs: 0 } }}>
+      <Box>
         <Typography 
           variant="subtitle2" 
           sx={{ 
@@ -83,9 +130,9 @@ export default function DetailCard({ activeSession }) {
           Functional Scope
         </Typography>
         
-        <Stack spacing={2}>
+        <Stack spacing={1.5}>
           {activeSession.features.map((feat, idx) => (
-            <Stack key={idx} direction="row" spacing={2} alignItems="flex-start">
+            <Stack key={idx} direction="row" spacing={1.5} alignItems="flex-start">
               <Box 
                 sx={{ 
                   mt: '3px', 
@@ -93,21 +140,21 @@ export default function DetailCard({ activeSession }) {
                   display: 'flex', 
                   alignItems: 'center', 
                   justifyContent: 'center',
-                  width: 16,
-                  height: 16,
+                  width: 14,
+                  height: 14,
                   borderRadius: '50%',
                   backgroundColor: `${activeSession.roleColor}15`,
                   color: activeSession.roleColor
                 }}
               >
-                <Check size={12} strokeWidth={3} />
+                <Check size={10} strokeWidth={3} />
               </Box>
               <Typography 
                 variant="body2" 
                 color="text.secondary" 
                 sx={{ 
-                  fontSize: '0.9rem', 
-                  lineHeight: 1.5 
+                  fontSize: '0.85rem', 
+                  lineHeight: 1.4 
                 }}
               >
                 {feat}
@@ -117,8 +164,8 @@ export default function DetailCard({ activeSession }) {
         </Stack>
       </Box>
 
-      {/* Workflow Status Pipeline Tracker */}
-      <Box sx={{ pl: { xs: 0 } }}>
+      {/* Dynamic Workflow Status Pipeline Tracker */}
+      <Box>
         <Typography 
           variant="subtitle2" 
           sx={{ 
@@ -130,65 +177,38 @@ export default function DetailCard({ activeSession }) {
             fontSize: '0.75rem'
           }}
         >
-          Approval Pipeline
+          Target Roles Flow
         </Typography>
         
-        <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ position: 'relative', px: 1 }}>
-          {/* Connecting Line */}
-          <Box 
-            sx={{ 
-              position: 'absolute', 
-              top: '12px', 
-              left: '20px', 
-              right: '20px', 
-              height: '2px', 
-              backgroundColor: 'rgba(255, 255, 255, 0.06)',
-              zIndex: 1
-            }} 
-          />
-          
-          {['AIM', 'AM', 'ZM', 'RM'].map((step, idx) => {
-            const state = activeSession.status[idx];
-            const isCurrent = state === 'Active';
-            const isDone = state === 'Complete';
-            
-            return (
-              <Stack key={step} alignItems="center" spacing={1} sx={{ zIndex: 2 }}>
-                <Box 
-                  sx={{ 
-                    width: 24, 
-                    height: 24, 
-                    borderRadius: '50%', 
-                    display: 'flex', 
-                    alignItems: 'center', 
-                    justifyContent: 'center',
-                    backgroundColor: isDone ? '#10b981' : isCurrent ? activeSession.roleColor : '#181f30',
-                    border: isCurrent ? `4px solid ${activeSession.roleColor}33` : 'none',
-                    transition: 'all 0.3s ease',
-                    boxShadow: isCurrent ? `0 0 10px ${activeSession.roleColor}33` : 'none'
-                  }}
-                >
-                  {isDone ? (
-                    <Check size={12} strokeWidth={3} style={{ color: '#fff' }} />
-                  ) : (
-                    <Box sx={{ width: 6, height: 6, borderRadius: '50%', backgroundColor: isCurrent ? '#fff' : 'rgba(255,255,255,0.15)' }} />
-                  )}
-                </Box>
-                
-                <Typography 
-                  variant="caption" 
-                  sx={{ 
-                    fontWeight: isCurrent || isDone ? 700 : 500, 
-                    color: isDone ? '#10b981' : isCurrent ? activeSession.roleColor : 'text.secondary',
-                    fontSize: '0.7rem'
-                  }}
-                >
-                  {step}
-                </Typography>
-              </Stack>
-            );
-          })}
-        </Stack>
+        <Box 
+          sx={{ 
+            display: 'flex', 
+            flexWrap: 'wrap', 
+            alignItems: 'center', 
+            gap: 1.5,
+            p: 2,
+            borderRadius: 2,
+            backgroundColor: 'rgba(255, 255, 255, 0.01)',
+            border: '1px solid rgba(255, 255, 255, 0.04)'
+          }}
+        >
+          {activeSession.status.map((step, idx) => (
+            <React.Fragment key={step}>
+              {idx > 0 && <ArrowRight size={14} style={{ color: 'rgba(255, 255, 255, 0.2)' }} />}
+              <Chip 
+                label={step}
+                size="small"
+                sx={{
+                  backgroundColor: idx === 0 ? `${activeSession.roleColor}22` : 'rgba(255, 255, 255, 0.03)',
+                  color: idx === 0 ? activeSession.roleColor : 'text.secondary',
+                  border: `1px solid ${idx === 0 ? activeSession.roleColor + '44' : 'rgba(255,255,255,0.06)'}`,
+                  fontWeight: 600,
+                  fontSize: '0.7rem'
+                }}
+              />
+            </React.Fragment>
+          ))}
+        </Box>
       </Box>
 
     </Box>

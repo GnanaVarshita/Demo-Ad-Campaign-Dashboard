@@ -1,7 +1,84 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Box, Stack } from '@mui/material';
 
 export default function VideoPlayer({ activeSession }) {
+  const containerRef = useRef(null);
+  const playerRef = useRef(null);
+
+  // Extract video ID from embed URL
+  const videoId = activeSession.videoSrc.split('/').pop().split('?')[0];
+
+  useEffect(() => {
+    let player;
+    
+    // Function to initialize YT Player
+    const initPlayer = () => {
+      if (!containerRef.current) return;
+      
+      // Create a target div inside the container
+      const targetDiv = document.createElement('div');
+      targetDiv.style.width = '100%';
+      targetDiv.style.height = '100%';
+      targetDiv.style.position = 'absolute';
+      targetDiv.style.top = '0';
+      targetDiv.style.left = '0';
+      containerRef.current.innerHTML = '';
+      containerRef.current.appendChild(targetDiv);
+
+      player = new window.YT.Player(targetDiv, {
+        videoId: videoId,
+        playerVars: {
+          autoplay: 1,
+          mute: 1,
+          rel: 0,
+          controls: 1,
+          showinfo: 0,
+          ecver: 2
+        },
+        events: {
+          onReady: (event) => {
+            event.target.setPlaybackRate(1.25);
+            event.target.playVideo();
+          },
+          onStateChange: (event) => {
+            // Re-apply 1.25 playback speed whenever the player state updates/plays
+            if (event.data === window.YT.PlayerState.PLAYING) {
+              event.target.setPlaybackRate(1.25);
+            }
+          }
+        }
+      });
+      playerRef.current = player;
+    };
+
+    // Load YouTube API script if not loaded
+    if (!window.YT) {
+      // Check if tag is already in the document
+      const existingScript = document.getElementById('youtube-iframe-api');
+      if (!existingScript) {
+        const tag = document.createElement('script');
+        tag.id = 'youtube-iframe-api';
+        tag.src = 'https://www.youtube.com/iframe_api';
+        const firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+      }
+      
+      // YT API triggers this callback when loaded
+      window.onYouTubeIframeAPIReady = () => {
+        initPlayer();
+      };
+    } else {
+      initPlayer();
+    }
+
+    // Cleanup on unmount or video change
+    return () => {
+      if (player && typeof player.destroy === 'function') {
+        player.destroy();
+      }
+    };
+  }, [videoId]);
+
   return (
     <Box 
       className="video-glow"
@@ -55,24 +132,16 @@ export default function VideoPlayer({ activeSession }) {
         </Box>
       </Box>
 
-      {/* YouTube Embed Player */}
-      <Box sx={{ position: 'relative', flexGrow: 1, display: 'flex', alignItems: 'center', backgroundColor: '#000', minHeight: '400px' }}>
-        <iframe
-          src={`${activeSession.videoSrc}?autoplay=1&mute=1&rel=0`}
-          title={activeSession.title}
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-          style={{
-            width: '100%',
-            height: '100%',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            border: 0,
-          }}
-        />
-      </Box>
+      {/* YouTube API Embed Player with 16:9 aspect ratio */}
+      <Box 
+        ref={containerRef}
+        sx={{ 
+          position: 'relative', 
+          width: '100%', 
+          paddingTop: '56.25%', 
+          backgroundColor: '#000' 
+        }}
+      />
     </Box>
   );
 }
