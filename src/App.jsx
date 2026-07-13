@@ -21,7 +21,7 @@ const sessions = [
     role: 'AIM & Management',
     roleColor: '#6366f1', // Indigo
     videoSrc: 'https://www.youtube.com/embed/REGL31kV6KY',
-    url: 'https://gnanavarshita.github.io/Campaign-dashboard/',
+    url: ' https://campaign-dashboard-virid.vercel.app/',
     icon: Landmark,
     description: 'This walkthrough demonstrates the end-to-end budget request lifecycle. First, the AIM (All India Manager) starts a BRS, setting the time limits. Account Managers (AMs) then submit their regional requirements, which flow up to Zonal and Regional Managers for approvals, culminating in automatic P.O generation.',
     features: [
@@ -51,7 +51,7 @@ const sessions = [
     role: 'AM, ZM & Vendors',
     roleColor: '#a855f7', // Purple
     videoSrc: 'https://www.youtube.com/embed/ZPWPKee0r9Q',
-    url: 'https://gnanavarshita.github.io/Campaign-dashboard/',
+    url: ' https://campaign-dashboard-virid.vercel.app/',
     icon: Receipt,
     description: 'Once a P.O is active, the AM logs campaign spending in the Activity Sheet. This workflow traces the approval flow from Zonal Managers to external Vendors, who can proceed to billing, add commissions, and submit files to finance.',
     features: [
@@ -80,7 +80,7 @@ const sessions = [
     role: 'Sales Tracking',
     roleColor: '#10b981', // Emerald
     videoSrc: 'https://www.youtube.com/embed/ktHirpxDUBs',
-    url: 'https://gnanavarshita.github.io/Campaign-dashboard/',
+    url: ' https://campaign-dashboard-virid.vercel.app/',
     icon: BarChart3,
     description: 'This video demonstrates the sales recording feature, tracking how area-wise sales figures and distributor allocations propagate instantly into automated dashboards and reports.',
     features: [

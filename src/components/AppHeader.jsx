@@ -40,7 +40,7 @@ export default function AppHeader() {
               variant="outlined"
               size="small"
               component="a"
-              href="https://gnanavarshita.github.io/Campaign-dashboard/"
+              href="https://campaign-dashboard-virid.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
               sx={{ display: { xs: 'none', sm: 'inline-flex' }, color: '#f8fafc', borderColor: 'rgba(255,255,255,0.15)' }}
